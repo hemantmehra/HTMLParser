@@ -2,4 +2,5 @@
 `cmake . -B build -GNinja && ninja -C build`
 
 # Run
-`build/src/swb`
+`./build/src/main ./sample/sample2.html`
+
