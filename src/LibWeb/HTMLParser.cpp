@@ -3,6 +3,8 @@
 #include <DOM/DocumentType.h>
 #include <DOM/ElementFactory.h>
 #include <DOM/Text.h>
+#include <algorithm>
+#include <string>
 
 namespace Web
 {
@@ -260,7 +262,7 @@ namespace Web
         }
 
         {
-            std::vector names = {"base", "basefont", "bgsound", "link", "meta", "noframes", "script", "style", "template", "title"};
+            std::vector<std::string> names = {"base", "basefont", "bgsound", "link", "meta", "noframes", "script", "style", "template", "title"};
             if (std::find(names.begin(), names.end(), token.tag_name()) != names.end()) {
                 assert(false);
             }
@@ -294,7 +296,7 @@ namespace Web
 
     void HTMLParser::generate_implied_end_tags()
     {
-        std::vector names{ "dd", "dt", "li", "optgroup", "option", \
+        std::vector<std::string> names{ "dd", "dt", "li", "optgroup", "option", \
         "p", "rb", "rp", "rt", "rtc" };
 
         while ((std::find(names.begin(), names.end(), current_node()->tag_name()) != names.end())) {
@@ -303,7 +305,7 @@ namespace Web
     }
 
     bool HTMLParser::stack_of_open_elements_has_element_with_tag_name_in_scope(std::string tag_name) {
-        std::vector list{ "applet", "caption", "html", "table", "td", "th", "marquee", "object", "template" };
+        std::vector<std::string> list{ "applet", "caption", "html", "table", "td", "th", "marquee", "object", "template" };
         for (size_t i = m_stack_of_open_elements.size() - 1; i > 0; --i) {
             auto& node = m_stack_of_open_elements.at(i);
             if (node->tag_name() == tag_name)
@@ -347,7 +349,7 @@ namespace Web
         }
 
         {
-            std::vector names = {"address", "article", "aside", "blockquote", \
+            std::vector<std::string> names = {"address", "article", "aside", "blockquote", \
             "center", "details", "dialog", "dir", "div", "dl", "fieldset", "figcaption", \
             "figure", "footer", "header", "hgroup", "main", "menu", "nav", "ol", "p", "section", "summary", "ul"};
             if (token.is_start_tag() && (std::find(names.begin(), names.end(), token.tag_name()) != names.end())) {
@@ -357,7 +359,7 @@ namespace Web
         }
         
         {
-            std::vector names = {"address", "article", "aside", "blockquote", \
+            std::vector<std::string> names = {"address", "article", "aside", "blockquote", \
             "button", "center", "details", "dialog", "dir", "div", "dl", "fieldset", \
             "figcaption", "figure", "footer", "header", "hgroup", "listing", "main", "menu", \
             "nav", "ol", "pre", "section", "summary", "ul"};

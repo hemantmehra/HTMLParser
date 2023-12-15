@@ -8,9 +8,9 @@ int main(int argc, char const *argv[])
 {
 
     if (argc < 2) {
-        std::cout << "Simple Web Browser" << std::endl;
+        std::cout << "Simple HTML Parser" << std::endl;
         std::cout << std::string(50, '-') << std::endl;
-        std::cout << "Usage swb <filename>" << std::endl;
+        std::cout << "Usage `main <filename>`" << std::endl;
         return 0;
     }
 
